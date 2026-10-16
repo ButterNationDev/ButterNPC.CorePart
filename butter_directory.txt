@@ -1,0 +1,11 @@
+Butter (Model)
+|-cleanup
+|-CleanupEvent
+|- < all 64 butter parts >
+|- RootPart
+    |- Welds (Folder) (64x WeldConstraint)
+    |- main
+    |- pathfinder
+    |- weldWatcher
+    |- ScriptCommunication (BindableEvent)
+    |- MessageGUI (BillboardGui)
