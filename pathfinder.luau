@@ -49,7 +49,7 @@ end
 task.spawn(function()
 	while butter do
 		local parts = workspace:GetPartBoundsInBox(root.CFrame * CFrame.new(0,0,-4),Vector3.new(3.5,3.5,4),overparam)
-		local walls = workspace:GetPartBoundsInBox(root.CFrame * CFrame.new(0,5,-4),Vector3.new(3.5,3,4),overparam)
+		local walls = workspace:GetPartBoundsInBox(root.CFrame * CFrame.new(0,5,-4),Vector3.new(5,5,7),overparam)
 		local floors = workspace:GetPartBoundsInBox(root.CFrame,Vector3.new(3,4.2,3),overparam)
 		local canjump = true
 		local sawbutter = false
@@ -64,12 +64,10 @@ task.spawn(function()
 		if ismoving and #parts > 0 and root.AssemblyLinearVelocity.Y < 0.1 and #floors > 0 then
 			if sawbutter then
 				sc:Fire("Speak","hello")
-				return
 			elseif not canjump then
 				sc:Fire("Speak","there is a wall here")
 				local newcframe = root.CFrame * CFrame.Angles(0,180,0)
 				butter:PivotTo(newcframe)
-				return
 			else
 				sc:Fire("Speak","i will jump")
 				root.AssemblyLinearVelocity += Vector3.new(
