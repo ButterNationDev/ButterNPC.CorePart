@@ -3,7 +3,7 @@ local butter = root.Parent
 local RawButterID = math.random(0,99999999)
 local butterID = "butter_" .. string.rep("0",8 - #tostring(RawButterID)) .. tostring(RawButterID)
 butter.Name = butterID
-local fakeChat = game:GetService("ReplicatedStorage"):WaitForChild("ChatRemotes"):WaitForChild("FakeMessage")
+local fakeChat = game.ReplicatedStorage.ChatRemotes.FakeMessage
 local sc = root.ScriptCommunication
 local currentmsg = ""
 local function displayMessage(message:string)
@@ -30,3 +30,5 @@ sc.Event:Connect(function(action,extrainfo)
 		displayMessage("dead")
 	end
 end)
+
+
