@@ -15,7 +15,7 @@ conn = welds.ChildRemoved:Connect(function(weld:WeldConstraint)
 	end
 	local hurt = weld.Part1
 	hurt.Parent = root.Parent.Parent
-	game:GetService("Debris"):AddItem(hurt,3)
+	task.delay(5,function() hurt:Destroy() end)
 end)
 while task.wait() do
 	if #welds:GetChildren() < 20 then
