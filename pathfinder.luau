@@ -18,23 +18,24 @@ local function add_with_weight(t,e,w)
 end
 local function pathfind(range)
 	local angles:{number} = {}
-	for i = 0,71 do
-		local yaw = math.rad(i * 5) + root.Rotation.Y
+	for i = 0,36 do
+		local yaw = math.rad(i * 5) + root.Rotation.Y - math.rad(90)
 		local dir = Vector3.new(math.sin(yaw),0,math.cos(yaw)) * range
 
 		local result = workspace:Raycast(root.Position + Vector3.yAxis * 2,dir,rayparam)
 		if result == nil then
 			if workspace:Raycast(root.CFrame.Position + dir, Vector3.yAxis * -6, rayparam) ~= nil then
 				add_with_weight(angles,yaw,3)
-			else
-				add_with_weight(angles,yaw,1)
 			end
 		end
 		task.wait()
 	end
-	if #angles == 0 and range <= 10 then 
-		sc:Fire("Speak","who trapped me here???")
-		return false
+	if #angles <= 0 then
+		if range <= 10 then
+			return false
+		else
+			pathfind(range - 5)
+		end
 	end
 	local selected = angles[math.random(math.min(1,#angles),#angles) or 1]
 	local newcframe = CFrame.new(root.CFrame.Position) * CFrame.Angles(0,selected,0)
@@ -93,7 +94,7 @@ task.spawn(function()
 	end
 end)
 while butter do
-	if pathfind(math.random(1,8) * 4) then
+	if pathfind(40) then
 		task.wait(math.random(200,300) / 200)
 	end
 	task.wait()
