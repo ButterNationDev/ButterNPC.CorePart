@@ -4,7 +4,7 @@ local sc = root.ScriptCommunication
 local db = false
 local dead = false
 local clean = root.Parent.CleanupEvent
-conn = welds.ChildRemoved:Connect(function()
+conn = welds.ChildRemoved:Connect(function(weld:WeldConstraint)
 	if not db and not dead then
 		task.wait(0.1)
 		sc:Fire("Speak","ouch")
@@ -13,6 +13,7 @@ conn = welds.ChildRemoved:Connect(function()
 			db = false
 		end)
 	end
+	weld.Part1.Parent = root.Parent.Parent
 end)
 while task.wait() do
 	if #welds:GetChildren() < 20 then
