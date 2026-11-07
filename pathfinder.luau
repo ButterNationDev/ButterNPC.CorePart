@@ -38,7 +38,7 @@ local function pathfind(range)
 		end
 	end
 	local selected = angles[math.random(math.min(1,#angles),#angles) or 1]
-	local newcframe = CFrame.new(root.CFrame.Position) * CFrame.Angles(0,selected,0)
+	local newcframe = CFrame.new(root.CFrame.Position) * CFrame.Angles(0,selected or 0,0)
 	butter:PivotTo(newcframe)
 	local move = task.spawn(function()
 		ismoving = true
