@@ -9,3 +9,6 @@ Butter (Model)
     |- weldWatcher
     |- ScriptCommunication (BindableEvent)
     |- MessageGUI (BillboardGui)
+    |- Loader
+    |- MainScript (ModuleScript)
+
