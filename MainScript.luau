@@ -5,7 +5,7 @@ if scriptType = "Main" then
     local RawButterID = math.random(0,99999999)
     local butterID = "butter_" .. string.rep("0",8 - #tostring(RawButterID)) .. tostring(RawButterID)
     butter.Name = butterID
-    local fakeChat = game.ReplicatedStorage.ChatRemotes.FakeMessage
+    local msgr = game.ReplicatedStorage.ChatRemotes.PostMessage
     local sc = root.ScriptCommunication
     local currentmsg = ""
     local function displayMessage(message:string)
@@ -18,7 +18,7 @@ if scriptType = "Main" then
             billboard.TextLabel.Visible = false
 	        	currentmsg = ""
       	end)
-        fakeChat:Fire(butterID,message,BrickColor.new("Daisy orange").Color)
+        msgr:Fire(butterID,message,BrickColor.new("Daisy orange").Color)
     end
     if math.random(1,2) == 1 then
 	      displayMessage("hello")
